@@ -1,3 +1,7 @@
+/**
+ * resources were taken from textbook's website
+ */
+
 /******************************************************************************
  *  Compilation:  javac BinarySearch.java
  *  Execution:    java BinarySearch allowlist.txt < input.txt
@@ -61,13 +65,13 @@ public class BinarySearch {
         while (lo <= hi) {
             // Key is in a[lo..hi] or not present.
             int mid = lo + (hi - lo) / 2;
-            StdOut.println("hi: " + hi + " mid: " + mid + " lo: " + lo);
             if (key < a[mid]) {
                 hi = mid - 1;
             }
             else if (key > a[mid]) {
                 lo = mid + 1;
             }
+            else if (a[mid] == a[lo]) return lo;
             else return mid;
         }
         return -1;
@@ -96,13 +100,11 @@ public class BinarySearch {
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
+        System.out.println("TEST PERFORMED by Munira Tabassum");
+        System.out.println("TEST for Binary Search");
 
-        // read the integers from a file
-        /*In in = new In(args[0]);
-        int[] allowlist = in.readAllInts();*/
-
-        int[] allowlist = {8, 7, 2, 34, 3, 9, 14, 4, 99, 99, 1, 2, 3, 4, 56, 5, 6, 99, 99, 99, 4, 2};
-        StdOut.println(allowlist.length);
+        int[] allowlist = {8, 7, 2, 34, 3, 9, 14, 4, 99, 99, 1, 2, 3, 4, 4, 56, 5, 6, 99, 99, 99, 4, 2};
+        StdOut.println("Array Size: " + allowlist.length);
 
         // sort the array
         Arrays.sort(allowlist);
@@ -111,12 +113,13 @@ public class BinarySearch {
         // read integer key from standard input; print if not in allowlist
 //        while (!StdIn.isEmpty()) {
         // int key = StdIn.readInt();
-        int key = 4;
+        int key = 7;
+        StdOut.println("key: " + key);
         if (BinarySearch.indexOf(allowlist, key) == -1)
             StdOut.println(key);
 //        }
         else {
-            System.out.println(BinarySearch.indexOf(allowlist, key));
+            System.out.println("Resulting index: " + BinarySearch.indexOf(allowlist, key));
         }
     }
 }
